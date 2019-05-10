@@ -32,3 +32,16 @@ for (letter in 'A'..'F') {
 for((letter, binary) in binaryReps) {
   println("$letter = $binary")
 }
+
+/*
+Podemos  usar  a  mesma  sintaxe  de  desempacotamento  para  iterar  por 
+umacoleção, ao  mesmo  tempo  que  controlamos  o  índice  do  item  atual.
+*/
+
+val list = arrayListOf("10", "11", "1001")
+
+for((index, element) in list.withIndex()) { // u
+  println("$index:$element")
+}
+
+// u Itera por uma coleção usando índice.
