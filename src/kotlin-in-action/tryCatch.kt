@@ -15,4 +15,16 @@ readNumber(reader) // v
 // u Torna-se o valor da expressão
 // v Nada é exibido
 
+// 2.19 Devolvendo um valor em catch
 
+fun readNumber(reader: BufferedReader) {
+  val number = try {
+    Integer.parseInt(reader.readLine())
+  } catch (e: NumberFormatException) {
+    null
+  }
+  println(number)
+}
+
+val reader = BufferedReader(StringReader("not a number"))
+readNumber(reader) // null
