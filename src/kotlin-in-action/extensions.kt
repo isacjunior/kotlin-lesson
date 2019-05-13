@@ -11,7 +11,7 @@ fun String.lastChar(): Char = this.get(this.length - 1)
 
 // Podemos omitir o this e o retorno neste exemplo
 
-fun Stirng.lastChar() = get(length - 1)
+fun String.lastChar() = get(length - 1)
 
 // 3.1 Importações e funções de extensão
 
@@ -43,7 +43,7 @@ println(list.joinToString()) // "1,2,3,4"
 // v this refere-se ao objeto receptor - uma coleção de T.
 
 /*
-Vamos supor que queiramos gter uma função `join` que possa ser chamada somente
+Vamos supor que queiramos obter uma função `join` que possa ser chamada somente
 por string.
 */ 
 

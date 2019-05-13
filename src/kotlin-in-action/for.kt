@@ -35,7 +35,7 @@ for((letter, binary) in binaryReps) {
 
 /*
 Podemos  usar  a  mesma  sintaxe  de  desempacotamento  para  iterar  por 
-umacoleção, ao  mesmo  tempo  que  controlamos  o  índice  do  item  atual.
+uma coleção, ao  mesmo  tempo  que  controlamos  o  índice  do  item  atual.
 */
 
 val list = arrayListOf("10", "11", "1001")
