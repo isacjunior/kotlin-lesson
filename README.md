@@ -871,11 +871,45 @@ fun TalkativeButton.giveSpeech() { // u
   whisper() // w
 }
 
-
 // u Erro: membro `public` expõe seu tipo receptor TalkativeButton `internal`
 // v Erro: não é possível acessar `yell` - é `private` em `TalkativeButton`.
 // w Erro: não é possível acessar `whisper` - é `protected` em `TalkativeButton`.
 ```
+
+## Classes aninhadas
+
+```Kotlin
+// 4.11 Classe aninhada
+
+class Button : View {
+  override fun getCurrentState(): State = ButtonState()
+  override fun restoreState(state: State) { /* ... */ }
+  class ButtonState : State { /* ... */ } // u
+}
+
+// u Essa classe é semehante a uma classe estática aninhada em Java.
+```
+
+## Classes seladas
+
+```Kotlin
+// 4.13 Expressões como classes seladas
+
+sealed class Expr { // u
+  class Num(val value: Int): Expr()
+  class Sum(val left: Expr, val right: Expr) : Expr() // v
+}
+
+fun eval(e: Expr): Int =
+  when(e) { // w
+    is Expr.Num -> e.value
+    is Expr.Sum -> eval(e.right) + eval(e.left)
+  }
+
+// u Marca uma classe-base como sealed
+// v Lista
+```
+
 
 
 
