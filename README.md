@@ -835,6 +835,67 @@ abstract class Animated { // u
 // w Funções não abstratas em classes abstratas não são abertas por padrão, mas podem ser marcadas como abertas
 ```
 
+```Kotlin
+// 4.2.3 Implementando propriedades declaradas em interfaces
+
+/* Em Kotlin, uma interface pode conter propriedades abstratas */
+
+interface User {
+  val nickname: String
+}
+```
+
+```Kotlin
+// 4.14 Implementando uma propriedade da interface
+
+class PrivateUser(override val nickname: String) : User // u
+
+class SubscribingUser(val email: String) : User {
+  override val nickname: String
+    get() = email.substringBefore('@') // v
+}
+
+class FacebookUser(val accountId: Int) : User {
+  override val nickname = getFacebookName(accountId) // w
+}
+
+// u Propriedade do construtor primário
+// v getter personalizado
+// w Inicializador da propriedade
+```
+
+```Kotlin
+// 4.15 Acessando o backing field em um setter
+
+class User(val name: String) {
+  var address: String = "unspecified"
+  set(value: String) {
+    println("""
+      Address was changed for $name: "$field" -> "$value"
+      """.trimIndent()) // u
+    field = value // v
+  }
+}
+
+// u Lê o valor do backing field
+// Atualiza o valor do backing field
+```
+
+```Kotlin
+// 4.16 Declarando uma propriedade com um setter private
+
+class LengthCounter {
+  var counter: Int = 0
+    private set // u
+  
+  fun addWord(word: String) {
+    counter += word.length
+  }
+}
+
+// u Essa propriedade não pode ser altera de fora da classe
+```
+
 ## Modificadores de acesso e visibilidade
 
 ### Acesso:
