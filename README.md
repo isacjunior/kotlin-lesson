@@ -1050,6 +1050,87 @@ class MyButton : View {
 // u Delega para outro construtor da classe
 ```
 
+## Métodos universais de objetos
 
+### toString()
+
+```Kotlin
+class Client(val name: String, val postCode: Int) {
+  override fun toString() = "Client(name=$name, postalCode=$postalCode)"
+}
+
+val client = Client("Alice", 34567)
+println(client1) // Client(Alice, 34567)
+```
+
+### equals()
+
+```Kotlin
+// == verifica se os objetos são iguais
+// === verifica se as referências são iguais
+
+val client1 = Client("Alice", 34567)
+val client2 = Client("Alice", 34567)
+
+println(client1 == client2) // false
+```
+
+```Kotlin
+// 4.19 Implementando equals() para Client
+
+class Client(val name: String, val postalCode: Int) {
+  override fun equals(other: Any?): Boolean { // u
+    if(other == null || other !is Client) // v
+      return false
+    return name == other.name && postalCode == other.postalCode // w
+  }
+}
+
+// u Any significa que other pode ser null
+// v Verifica se other é um Client
+// w Verifica se as propriedades são iguais
+```
+
+### hashCode()
+
+```Kotlin
+// 4.20 Implementando hashCode() em Client
+
+class Client(val name: String, val postalCode: Int) {
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other !is Client)
+      return false
+    return other.name == name other.postalCode == postalCode
+  }
+
+  override fun hashCode(): Int = name.hashCode() * 31 + postalCode
+}
+
+val processed = hashSetOf(Client("Alice", 123))
+println(processed.contains(Client("Alice", 123))) // true
+```
+
+## Data class
+
+```Kotlin
+// 4.3.2 Data classes
+
+data class Client(val name: String, val postalCode: Int)
+
+/* Now you have a class that overrides all the standard Java methods 
+  equals(): Para comparação de instâncias.
+  hashCode(): Para usar como chaves em containers baseados em hashes, como HashMap.
+  toString(): Para gerar a representação de strings que mostrem todos os campos na ordem da declaração.
+*/
+
+// Método copy() - Data class também implementa o copy pra nós, não sendo necessário algo do tipo:
+
+class Client(val name: String, val postalCode: Int) {
+  fun copy(name: String = this.name, postalCode: Int = this.postalCode) = Client(name, postalCode)
+}
+
+val bob = Client("Bob", 973293)
+println(bob.copy(postalCode = 123)) // Client(name=Bob, postalCode=123)
+```
 
 
