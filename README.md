@@ -321,7 +321,7 @@ val list = listOf(1, 2, 3, 4)
 
 // Se obervamos como essa função está declarada, veremos o seguinte:
 
-fun listOf<T>(vararg values: T): List<T> { ... }
+fun <T> listOf(vararg elements: T): List<T> { ... }
 
 // Exemplo
 
