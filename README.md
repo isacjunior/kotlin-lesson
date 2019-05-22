@@ -325,7 +325,7 @@ fun listOf<T>(vararg values: T): List<T> { ... }
 
 // Exemplo
 
-fun createList(vararg args: String): List<String> {
+fun <T> createList(vararg args: T): List<T> {
     return listOf(*args)
 }
 
