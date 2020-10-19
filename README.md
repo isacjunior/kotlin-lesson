@@ -916,11 +916,6 @@ class LengthCounter {
 | protected  | Vísivel em subclasses  | --  |
 | private  | Vísivel em uma classe  | Vísivel em um arquivo  |
 
-internal open class TalkativeButton {
-  private fun yell() = println("Hey!")
-  protected fun whisper() =  println("Let's talk!")
-}
-
 ```Kotlin
 internal open class TalkativeButton {
   private fun yell() = println("Hey!")
@@ -1133,4 +1128,20 @@ val bob = Client("Bob", 973293)
 println(bob.copy(postalCode = 123)) // Client(name=Bob, postalCode=123)
 ```
 
+## Object
+Object declaration is a way to define a singleton.
+
+```Kotlin
+// 4.4 The "object" keyword
+
+object Payroll {
+  val allEmployees = arrayListOf<Person>()
+  
+  fun calculateSalary() {
+    for (person in allEmployees) {
+      // ...
+    }
+  }
+}
+```
 
