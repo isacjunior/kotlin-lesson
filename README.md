@@ -1145,3 +1145,24 @@ object Payroll {
 }
 ```
 
+## Companion Objects
+
+Companion objects can contain factory methods and other methods that are related to this class but don't require a class instance to be called. Their members can be acessed via class name.
+
+Prefer to use top-level functions, but attention for the private members.
+![](https://i.imgur.com/543artX.png)
+
+```Kotlin
+// 4.4.2
+
+class A {
+  companion object {
+    fun bar() {
+      println("Companion object called")
+    }
+  }
+}
+
+A.bar() // Companion object called
+```
+
