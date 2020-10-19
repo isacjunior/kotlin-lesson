@@ -1166,3 +1166,31 @@ class A {
 A.bar() // Companion object called
 ```
 
+Companion object is the best approach to use factory methods.
+
+```Kotlin
+// 4.25 Defininf a class with multiple secondary constructors
+
+class User {
+  val nickname: String
+  
+  constructor(email: String) {
+    nickname = email.substringBefore('@')
+  }
+  
+  constructor(facebookAccountId: Int) {
+    nickname = getFacebookName(facebookAccountId)
+  }
+}
+```
+
+An alternative approach to express the same logic, which may be beneficial for many reasons, is to use factory methods to create instances of the class.
+
+```Kotlin
+class User private constructor(val nickname: String) {
+  companion object {
+    fun newSubscribingUser(email: String) = User(email.substringBefore('@'))
+    fun newFacebookUser(accountId: Int) = User(getFacebookName(accountId))
+  }
+}
+```
