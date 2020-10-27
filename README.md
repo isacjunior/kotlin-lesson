@@ -1194,3 +1194,31 @@ class User private constructor(val nickname: String) {
   }
 }
 ```
+
+## Lambda
+
+Lambda expressions, or simply lambdas, are essentially small chunks of code that can be passed to other function. Lambda is the ability to treat functions as values.
+
+### Searching through a collection using a lambda
+
+```kt
+class Person(val name: String, val age: Int)
+val people = listOf(Person("Alice", 29), Person("Bob", 31))
+println(people.maxBy { it.age })
+```
+
+### Searching using a member reference
+
+```kotlin
+println(people.maxBy(Person::age))
+```
+
+### Syntax for lambda expressions
+
+A lambda expression in Kotlin is always surrounded by curly braces. Note that there are no parentheses around the arguments.
+
+```kotlin
+val sum = { x: Int, y: Int -> x + y }
+println(sum(1,2)) // 3
+```
+
